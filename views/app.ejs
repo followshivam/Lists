@@ -1,0 +1,28 @@
+<%- include("header") %>
+
+    <h1 class="title"><%= title %></h1>
+
+<% content.forEach(function(list){ %>
+      <div class="listItems">
+
+        <form class="item" action="/deleteList" method="post">
+          <input type="checkbox" name="listid" value="<%= list._id %>" onChange="this.form.submit()">
+        </form>
+
+        <a href="/<%= list.name %>"> <%= list.name%> </a>
+      </div>
+<% }) %>
+
+<div class="composeList">
+  <h2> Add new List here</h2>
+  <form action="/addList" method="post">
+    <input type="text" name="list">
+    <button type="submit" name="item" >+</button>
+  </form>
+</div>
+
+<form class="feedback" action="/FEEDBACK" method="get">
+  <button class="feedback" type="submit" name="button">Feedback</button>
+</form>
+
+<%- include("footer") %>
